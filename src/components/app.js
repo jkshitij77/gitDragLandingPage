@@ -1,56 +1,31 @@
 import React from 'react';
-// import { createRoot } from 'react-dom/client';
 import '../style.scss';
-import {
-  BrowserRouter, Routes, Route, NavLink, useParams,
-} from 'react-router-dom';
-
-// function App() {
-//   return <div className="test">All the REACT are belong to us!</div>;
-// }
-function About(props) {
-  return <div> All there is to know about me </div>;
-}
-function Welcome(props) {
-  return <div>Welcome</div>;
-}
-function Nav(props) {
-  return (
-    <nav>
-      <ul>
-        <li><NavLink to="/" exact>Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/test/id1">test id1</NavLink></li>
-        <li><NavLink to="/test/id2">test id2</NavLink></li>
-      </ul>
-    </nav>
-  );
-}
-function Test(props) {
-  const { id } = useParams();
-  return <div> ID: {id} </div>;
-}
-function FallBack(props) {
-  return <div>URL Not Found</div>;
-}
+import Typewriter from 'typewriter-effect';
+import Card from './card';
 
 function App(props) {
   return (
-    <BrowserRouter>
-      <div>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/test/:id" element={<Test />} />
-          <Route path="*" element={<FallBack />} />
-        </Routes>
+    <div>
+      <div className="text-8xl p-20 text-center">
+        <Typewriter
+          options={{
+            pauseFor: 100000000,
+            strings: ['Welcome to gitDrag'],
+            autoStart: true,
+            loop: true,
+          }}
+        />
       </div>
-    </BrowserRouter>
+      <div className="flex flex-row justify-around">
+        <Card download_link="hi" platform="Mac" img_src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png" />
+        <Card download_link="hi"
+          platform="Windows"
+          img_src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/1200px-Windows_logo_-_2012_derivative.svg.png"
+        />
+        <Card download_link="hi" platform="Linux" img_src="https://cdn.freebiesupply.com/logos/thumbs/2x/linux-tux-1-logo.png" />
+      </div>
+    </div>
   );
 }
 
 export default App;
-
-// const root = createRoot(document.getElementById('main'));
-// root.render(<App />);
